@@ -1,0 +1,33 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="article-service.html">
+<link rel="import" href="my-article.html">
+
+<polymer-element name="article-list" attributes="show">
+	<template>
+		<style>
+			:host
+			{
+				display: block;
+				width: 100%;
+			}
+			post-card 
+			{
+				margin-bottom: 30px;
+			}
+		</style>
+		<article-service id="service" posts="{{posts}}" test="{{show}}">
+		</article-service>
+		<!-- center -->
+		<div layout vertical >
+			<template repeat="{{post in posts}}">
+				<my-article>
+					<h2>{{post.Title}}</h2>
+					<p>{{post.Body}}</p>
+				</my-article>
+			</template>
+		</div>
+	</template>
+	<script>
+		Polymer({});
+	</script>
+</polymer-element>

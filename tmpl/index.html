@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+		<title>{{.Title}}</title>
+		<script src="bower_components/platform/platform.js"></script>
+		<link rel="import" href="bower_components/core-header-panel/core-header-panel.html">
+		<link rel="import" href="bower_components/core-toolbar/core-toolbar.html">
+		<link rel="import" href="bower_components/paper-tabs/paper-tabs.html">
+		
+		
+		<link rel="import" href="elements/article-list.html">
+		
+		
+		<style type="text/css">
+			html,body {
+			    height: 100%;
+			    margin: 0;
+			    background-color: #E5E5E5;
+			}
+			core-header-panel {
+			  height: 100%;
+			  overflow: auto;
+			  -webkit-overflow-scrolling: touch; 
+			}
+			core-toolbar {
+			  background: #03a9f4;
+			  color: white;
+			}
+			#tabs {
+			  width: 100%;
+			  margin: 0;
+			  -webkit-user-select: none;
+			  -moz-user-select: none;
+			  -ms-user-select: none;
+			  user-select: none;
+			}
+			.container{
+				margin-left: 20px;
+			}
+		</style>
+	<head>
+	<body unresolved touch-action="auto">
+		<core-header-panel>
+			<core-toolbar>
+				<paper-tabs id="tabs" valueattr="name" selected="blog" self-end>
+					<paper-tab name="blog">Blog</paper-tab>
+					<paper-tab name="about">About</paper-tab>
+				</paper-tabs>
+			</core-toolbar>
+			<!-- center -->
+			<div class="container" layout vertical >
+				<!-- 
+				<my-article>
+					<h2>test</h2>
+					<p>kollar att detta fungerar som det skall</p>
+				</my-article>
+				 -->
+				<article-list show="all"></article-list>
+			</div>
+		</core-header-panel>
+		<script type="text/javascript">
+			var tabs = document.querySelector('paper-tabs');
+			var list = document.querySelector('article-list');
+			
+			tabs.addEventListener('core-select', function() {
+				console.log( tabs.selected );
+				list.show = tabs.selected;
+			});
+		</script>
+	</body>
+</html>
+

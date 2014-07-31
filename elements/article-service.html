@@ -1,0 +1,32 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/core-ajax/core-ajax.html">
+
+<polymer-element name="article-service" attributes="posts test" >
+	<template>
+		<style>
+			:host 
+			{
+				display: none;
+			}
+		</style>
+		<core-ajax
+			id="ajax"
+			auto
+			url="../json"
+			params='{"test": "{{test}}"}'
+			on-core-response="{{postsLoaded}}"
+			handleAs="json">
+		</core-ajax>
+	</template>
+	<script>
+		Polymer('article-service', {
+			created: function() {
+				console.log( "test");
+				this.posts = [];
+			},
+			postsLoaded: function() {
+				this.posts = this.$.ajax.response.slice(0);
+			}
+		});
+	</script>
+</polymer-element>
