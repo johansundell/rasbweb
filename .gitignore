@@ -1,2 +1,6 @@
 /raspweb
+/rasbweb
 *~
+/.buildpath
+/.project
+/.settings/*
